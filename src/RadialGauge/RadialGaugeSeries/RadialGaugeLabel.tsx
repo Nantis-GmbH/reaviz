@@ -40,10 +40,11 @@ export class RadialGaugeLabel extends PureComponent<RadialGaugeLabelProps> {
 
     return (
       <text
-        dy="1.23em"
         x="0"
         y={offset}
         textAnchor="middle"
+        // TODO: This is only valid when placed below the chart
+        alignmentBaseline={'text-after-edge'}
         onClick={(nativeEvent) => onClick({ data, nativeEvent })}
         className={classNames(className, css.valueLabel)}
       >
