@@ -1,7 +1,6 @@
 import React, { FC, ReactElement, useMemo } from 'react';
 import { arc } from 'd3-shape';
-import type { ArcData } from '../../PieChart';
-import { PieArc } from '../../PieChart';
+import { PieArc, ArcData, PieArcProps } from '../../PieChart';
 import { ChartShallowDataShape } from '../../common/data';
 import { ChartTooltip, ChartTooltipProps } from '../../common/Tooltip';
 
@@ -104,13 +103,10 @@ export const RadialGaugeArc: FC<Partial<RadialGaugeArcProps>> = ({
    * https://github.com/d3/d3-shape#arcs
    */
   const arcGenerator = useMemo(() => {
-    const aG = arc<ArcData>();
-    aG.innerRadius(innerRadius);
-    aG.outerRadius(outerRadius);
-    aG.cornerRadius(cornerRadius);
-    aG.padAngle(padAngle);
-    aG.padRadius(padRadius);
-    return aG;
+    return arc<ArcData>()
+      .innerRadius(innerRadius)
+      .outerRadius(outerRadius)
+      .cornerRadius(cornerRadius);
   }, [innerRadius, outerRadius, cornerRadius, padAngle, padRadius]);
 
   const arcData: ArcData = {
